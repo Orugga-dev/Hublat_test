@@ -3,7 +3,7 @@
   position: relative;
   overflow: hidden;
   /* Push image further into the background */
-  --hero-opacity: 0.18;
+  --hero-opacity: 0.25;
 }
 
 /* Make the hero image feel like a subtle texture */
