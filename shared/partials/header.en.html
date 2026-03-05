@@ -3,6 +3,7 @@
     <a href="index.html" class="flex items-center gap-3">
       <img src="../assets/img/logo/hublat-white.png" alt="Hublat" class="h-6 w-auto" />
     </a>
+          <a href="expertise.html" class="nav-link">Expertise</a>
 
     <nav class="hidden md:flex items-center gap-8">
       <a data-nav class="text-gray-300 hover:text-primary text-sm font-medium transition-colors" href="index.html#expertise">Expertise</a>
@@ -38,4 +39,19 @@
       </a>
     </div>
   </div>
+<script>
+  (function(){
+    function addCss(href){
+      if ([].slice.call(document.styleSheets).some(function(s){ return (s.href||'').includes(href); })) return;
+      var l=document.createElement('link'); l.rel='stylesheet'; l.href=href; document.head.appendChild(l);
+    }
+    function addJs(src){
+      if ([].slice.call(document.scripts).some(function(s){ return (s.src||'').includes(src); })) return;
+      var s=document.createElement('script'); s.src=src; s.defer=true; document.head.appendChild(s);
+    }
+    // works from /en/* and /es/*
+    addCss('../assets/css/motion.css');
+    addJs('../assets/js/motion.js');
+  })();
+</script>
 </header>
