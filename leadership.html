@@ -1,258 +1,69 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Hublat | Leadership</title>
+/**
+ * Simple static includes: loads /shared/partials/header.<lang>.html and footer.<lang>.html
+ * Usage:
+ *   <div data-include="header" data-lang="en"></div>
+ *   <div data-include="footer" data-lang="en"></div>
+ */
+(function () {
+  function getBasePath() {
+    // Works for /en/* and /es/*. Returns "../" for those, "./" otherwise.
+    const path = window.location.pathname;
+    if (path.includes("/en/") || path.includes("/es/")) return "../";
+    return "./";
+  }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  async function loadInclude(el) {
+    const include = el.getAttribute("data-include");
+    const lang = el.getAttribute("data-lang") || "en";
+    const base = getBasePath();
+    const url = `${base}shared/partials/${include}.${lang}.html`;
 
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#17b0cf",
-            "background-light": "#f6f8f8",
-            "background-dark": "#111e21",
-            "card-dark": "#1a2c30",
-            "text-subtle": "#94aeb5",
-          },
-          fontFamily: {
-            sans: ["Manrope", "sans-serif"],
-            serif: ["Playfair Display", "serif"],
-          },
-          borderRadius: {
-            DEFAULT: "0.25rem",
-            lg: "0.5rem",
-            xl: "0.75rem",
-            full: "9999px",
-          },
-        },
-      },
-    };
-  </script>
-
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <style>
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #111e21; }
-    ::-webkit-scrollbar-thumb { background: #244147; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #17b0cf; }
-    html { scroll-behavior: smooth; }
-  /* Leadership: subtle permanent motion + hover polish */
-@keyframes leadershipGridMove {
-  0% { transform: translate3d(0,0,0); }
-  100% { transform: translate3d(-40px, 30px, 0); }
-}
-.leadership-grid{
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(23,176,207,0.45) 1px, rgba(23,176,207,0.0) 2px);
-  background-size: 28px 28px;
-  animation: leadershipGridMove 22s linear infinite;
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.0) 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.0) 75%);
-}
-@keyframes leadershipFloat {
-  0% { transform: translate3d(0,0,0); }
-  50% { transform: translate3d(-16px, 12px, 0); }
-  100% { transform: translate3d(0,0,0); }
-}
-.leadership-float{ animation: leadershipFloat 12s ease-in-out infinite; }
-
-@keyframes statsSheen {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-.leadership-sheen{
-  background: linear-gradient(110deg, rgba(23,176,207,0.0), rgba(23,176,207,0.22), rgba(23,176,207,0.0));
-  background-size: 200% 100%;
-  animation: statsSheen 6s linear infinite;
-}
-
-/* reveal animation */
-.leader-card.is-visible{
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 700ms ease, transform 700ms ease;
-}
-
-</style>
-</head>
-
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden transition-colors duration-300">
-  <div data-include="header" data-lang="en"></div>
-
-  
-<main class="pt-24">
-  <section id="leadership" class="relative overflow-hidden py-20 bg-background-light dark:bg-background-dark">
-    <!-- Hero media (subtle motion) -->
-    <div class="absolute inset-0 pointer-events-none hero-media hero-kenburns" style="--hero-url:url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto=format&fit=crop'); --hero-opacity:0.38;" aria-hidden="true"></div>
-    <div class="absolute inset-0 hero-vignette" aria-hidden="true"></div>
-    <div class="absolute inset-0 pointer-events-none hero-grain" aria-hidden="true"></div>
-
-    <div class="pointer-events-none absolute inset-0 opacity-[0.08] dark:opacity-[0.12] leadership-grid"></div>
-    <div class="pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-primary/10 blur-3xl leadership-float"></div>
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <h1 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Leadership</h1>
-      <p class="text-slate-600 dark:text-text-subtle text-lg max-w-3xl mb-12">
-        Hublat is led by four senior partners with regional responsibilities across multiple Ibero‑America markets.
-      </p>
-
-
-      <!-- Leadership highlights -->
-      <div class="mt-10 mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="rounded-2xl border border-slate-200/70 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-start gap-3">
-            <div class="mt-0.5 w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 8V12L14.5 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-slate-900 dark:text-white leading-none">30+<span class="text-primary"> yrs</span></div>
-              <div class="mt-1 text-slate-600 dark:text-text-subtle">Telecom &amp; technology leadership</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200/70 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-start gap-3">
-            <div class="mt-0.5 w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M7 6v12M17 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-slate-900 dark:text-white leading-none">15+<span class="text-primary"> countries</span></div>
-              <div class="mt-1 text-slate-600 dark:text-text-subtle">Experience across Latin America</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200/70 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-start gap-3">
-            <div class="mt-0.5 w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-slate-900 dark:text-white leading-none">Execution<span class="text-primary"> +</span></div>
-              <div class="mt-1 text-slate-600 dark:text-text-subtle">Growth, resilience, and long-term value</div>
-            </div>
-          </div>
-        </div>
-      </div></p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 items-stretch auto-rows-fr">
-        <!-- Cards -->
-        <div class="leader-card group h-full flex flex-col items-center text-center opacity-0 translate-y-3 transition-transform duration-300 hover:-translate-y-1">
-  <div class="leader-avatar relative w-56 h-56 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
-    <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
-    <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-    <img src="../assets/img/leadership/luis-malvido.png" alt="Luis Malvido" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-  </div>
-  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Luis Malvido</h3>
-  <p class="text-primary font-medium mb-2">Partner</p>
-  <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed max-w-xs">With over 20 years of experience as CEO in Telco, PayTV and aviation, he has led transformation and growth processes across multiple markets in LatAm and Central Europe.</p>
-  <div class="mt-auto pt-6">
-  <a class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/luis-malvido-ceo/" target="_blank" rel="noopener" aria-label="Luis Malvido on LinkedIn">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-  </a>
-</div>
-</div>
-<div class="leader-card group h-full flex flex-col items-center text-center opacity-0 translate-y-3 transition-transform duration-300 hover:-translate-y-1">
-  <div class="leader-avatar relative w-56 h-56 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
-    <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
-    <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-    <img src="../assets/img/leadership/gustavo-ledesma.png" alt="Gustavo Ledesma" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-  </div>
-  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Gustavo Ledesma</h3>
-  <p class="text-primary font-medium mb-2">Partner</p>
-  <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed max-w-xs">With over 25 years in telecommunications, he specializes in business strategy, operations planning, brand development, pricing, and channels, leading commercial and digital transformations across the region.</p>
-  <div class="mt-auto pt-6">
-  <a class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/gustavo-ledesma-advisor-partner-cmo/" target="_blank" rel="noopener" aria-label="Gustavo Ledesma on LinkedIn">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-  </a>
-</div>
-</div>
-<div class="leader-card group h-full flex flex-col items-center text-center opacity-0 translate-y-3 transition-transform duration-300 hover:-translate-y-1">
-  <div class="leader-avatar relative w-56 h-56 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
-    <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
-    <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-    <img src="../assets/img/leadership/juan-goulu.png" alt="Juan Goulu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-  </div>
-  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Juan Goulu</h3>
-  <p class="text-primary font-medium mb-2">Partner</p>
-  <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed max-w-xs">With over 25 years of experience in the Telco sector, he has held CEO positions at leading companies in Latin America, focusing on transforming portfolios, channels, and processes to drive growth.</p>
-  <div class="mt-auto pt-6">
-  <a class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/juan-goulu-62723042/" target="_blank" rel="noopener" aria-label="Juan Goulu on LinkedIn">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-  </a>
-</div>
-</div>
-<div class="leader-card group h-full flex flex-col items-center text-center opacity-0 translate-y-3 transition-transform duration-300 hover:-translate-y-1">
-  <div class="leader-avatar relative w-56 h-56 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
-    <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
-    <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-    <img src="../assets/img/leadership/jose-ugarte.png" alt="Jose Ugarte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-  </div>
-  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Jose Ugarte</h3>
-  <p class="text-primary font-medium mb-2">Partner</p>
-  <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed max-w-xs">
-    With over 25 years in technology and telecommunications in Latin America, he has led operations, growth strategies, and business development across multinational companies and startups.
-  </p>
-  <div class="mt-auto pt-6">
-  <a class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/jfugarte/" target="_blank" rel="noopener" aria-label="Jose Ugarte on LinkedIn">
-    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-  </a>
-</div>
-</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-
-  <div data-include="footer" data-lang="en"></div>
-  <script src="../assets/js/includes.js"></script>
-<script>
-  (function () {
-    function initLeadershipReveal() {
-      var section = document.getElementById("leadership");
-      if (!section) return;
-
-      var cards = Array.prototype.slice.call(section.querySelectorAll(".leader-card"));
-      if (!cards.length) return;
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            cards.forEach(function (card, i) {
-              setTimeout(function () { card.classList.add("is-visible"); }, i * 90);
-            });
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.2 });
-
-      observer.observe(section);
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) {
+      console.warn("Include not found:", url);
+      return;
     }
+    const html = await res.text();
+    el.outerHTML = html;
+  }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initLeadershipReveal);
-    } else {
-      initLeadershipReveal();
+  function setActiveNav() {
+    const path = window.location.pathname.toLowerCase();
+    const items = document.querySelectorAll("[data-nav]");
+    items.forEach((a) => {
+      const target = (a.getAttribute("href") || "").toLowerCase();
+      if (!target) return;
+      const isHome = target.endsWith("/index.html") || target.endsWith("/en/") || target.endsWith("/es/");
+      const onHome = path.endsWith("/index.html") || path.endsWith("/en/") || path.endsWith("/es/") || path === "/" || path.endsWith("/en") || path.endsWith("/es");
+      const match = (isHome && onHome) || (target && path.endsWith(target));
+      if (match) a.classList.add("text-primary");
+    });
+  }
+
+  function wireMobileMenu() {
+    const btn = document.querySelector("[data-mobile-menu-button]");
+    const panel = document.querySelector("[data-mobile-menu]");
+    if (!btn || !panel) return;
+
+    btn.addEventListener("click", () => {
+      panel.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", panel.classList.contains("hidden") ? "false" : "true");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const includes = Array.from(document.querySelectorAll("[data-include]"));
+    for (const el of includes) {
+      try { await loadInclude(el); } catch (e) { console.error(e); }
     }
-  })();
-</script>
-</body>
-</html>
+    setActiveNav();
+    wireMobileMenu();
+
+    // Footer year
+    const y = document.querySelector("[data-year]");
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Notify other scripts (e.g., motion/header polish) that the partials are ready
+    try { document.dispatchEvent(new Event("hublat:includes-ready")); } catch (e) {}
+  });
+})();

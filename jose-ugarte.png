@@ -1,0 +1,65 @@
+
+/* ================================
+   Inner Page Hero System (Hublat)
+   Applies to non-home pages.
+   Calm, executive, always readable.
+   ================================ */
+
+.inner-hero{
+  position: relative;
+  overflow: hidden;
+  background: #111f22;
+}
+
+/* image layer */
+.inner-hero-media{
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-url);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--hero-opacity, 0.38);
+  transform: scale(1.05);
+  filter: blur(var(--hero-blur, 6px)) saturate(1.05) contrast(1.02);
+}
+
+/* optional slow motion */
+@keyframes innerHeroMove{
+  0%   { transform: scale(1.05) translate3d(0,0,0); }
+  100% { transform: scale(1.10) translate3d(-1%, -1%, 0); }
+}
+.inner-hero-kenburns{
+  animation: innerHeroMove 26s ease-in-out infinite alternate;
+}
+
+/* readability layers */
+.inner-hero-vignette{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 22% 28%, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.84) 100%),
+    linear-gradient(90deg, rgba(17,31,34,0.80) 0%, rgba(17,31,34,0.50) 42%, rgba(17,31,34,0.82) 100%);
+}
+
+/* subtle accent wash */
+.inner-hero-accent{
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 65% at 82% 38%, rgba(23,176,207,0.18) 0%, rgba(23,176,207,0.05) 40%, rgba(23,176,207,0.00) 70%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+/* grain */
+.inner-hero-grain{
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  pointer-events: none;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .inner-hero-kenburns{ animation: none !important; }
+}
