@@ -102,3 +102,103 @@ body > * { position: relative; z-index: 1; }
   transform: translateX(-140%);
   animation: btnShimmer 4.2s ease-in-out infinite;
 }
+
+/* 6) Hero enhancements (calm, executive) */
+@keyframes heroSweep {
+  0% { transform: translateX(-35%); opacity: 0; }
+  10% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { transform: translateX(35%); opacity: 0; }
+}
+.hero-grid{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity: 0.55;
+}
+.hero-grid::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(1200px 600px at 70% 18%, rgba(23,176,207,0.18), transparent 60%),
+    radial-gradient(900px 520px at 18% 70%, rgba(255,255,255,0.10), transparent 62%),
+    linear-gradient(to bottom, rgba(17,31,34,0.55), rgba(17,31,34,0.85));
+}
+.hero-grid::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(23,176,207,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,176,207,0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 18%, rgba(0,0,0,0.0) 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 18%, rgba(0,0,0,0.0) 72%);
+  animation: ambientDots 34s linear infinite;
+  opacity: 0.45;
+}
+.hero-divider{
+  position:absolute;
+  left:0; right:0;
+  bottom:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(23,176,207,0.55), transparent);
+  opacity: 0.75;
+}
+.hero-divider::after{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:50%;
+  width: 280px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.20), transparent);
+  filter: blur(0.4px);
+  transform: translateX(-35%);
+  animation: heroSweep 6.5s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+/* 7) Leadership card micro-interactions */
+.leader-card .leader-bio{
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 420ms ease, opacity 320ms ease;
+}
+.leader-card:hover .leader-bio{
+  max-height: 180px;
+  opacity: 1;
+}
+.leader-card .leader-overlay{
+  opacity: 0.0;
+  transition: opacity 320ms ease;
+}
+.leader-card:hover .leader-overlay{
+  opacity: 1;
+}
+
+/* 8) Section ornaments (used on leadership blocks) */
+@keyframes leadershipFloat {
+  0%,100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-14px, 10px, 0); }
+}
+.leadership-float{ animation: leadershipFloat 14s ease-in-out infinite; }
+.leadership-grid{
+  background-image:
+    linear-gradient(rgba(23,176,207,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,176,207,0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 18%, rgba(0,0,0,0.0) 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 18%, rgba(0,0,0,0.0) 72%);
+}
+@keyframes statsSheen {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.leadership-sheen{
+  background: linear-gradient(110deg, rgba(23,176,207,0.0), rgba(23,176,207,0.22), rgba(23,176,207,0.0));
+  background-size: 200% 100%;
+  animation: statsSheen 6s linear infinite;
+}
