@@ -62,6 +62,8 @@
     // Footer year
     const y = document.querySelector("[data-year]");
     if (y) y.textContent = new Date().getFullYear();
-    document.dispatchEvent(new Event("hublat:includes-ready"));
+
+    // Notify other scripts (e.g., motion/header polish) that the partials are ready
+    try { document.dispatchEvent(new Event("hublat:includes-ready")); } catch (e) {}
   });
 })();
