@@ -138,10 +138,11 @@
 <main class="pt-20">
   <!-- Hero -->
   <section id="top" class="relative min-h-[90vh] flex items-center overflow-hidden bg-[#111f22]">
-    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none hero-media hero-kenburns opacity-30" style="--hero-url:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')" aria-hidden="true"></div>
+    <div class="absolute inset-0 hero-vignette" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none hero-grain" aria-hidden="true"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 w-full py-20 flex flex-col items-center text-center z-10">
-      <p class="text-xs tracking-[0.22em] uppercase text-gray-400 mb-4">Telecom • Technology • Digital Transformation</p>
       <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] max-w-4xl mb-6">
         Strategic Growth &amp; <br />
         <span class="text-primary italic">Investment Advisory</span> <br />
@@ -161,7 +162,6 @@
         </a>
       </div>
     </div>
-    <div class="hero-divider" aria-hidden="true"></div>
   </section>
 
   <!-- Expertise -->
@@ -377,108 +377,79 @@
 
 
   <!-- Leadership preview -->
-  <section id="leadership" class="relative overflow-hidden py-24 bg-white dark:bg-[#0d1618] border-y border-slate-200 dark:border-white/10">
+  <section id="leadership" class="relative overflow-hidden py-24 bg-white dark:bg-[#0d1618]">
     <div class="pointer-events-none absolute inset-0 opacity-[0.08] dark:opacity-[0.12] leadership-grid"></div>
     <div class="pointer-events-none absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-primary/10 blur-3xl leadership-float"></div>
-
     <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-        <div class="max-w-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
           <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Leadership</h2>
-          <p class="text-slate-600 dark:text-text-subtle text-lg">Senior partners with deep regional experience across Ibero‑America markets.</p>
+          <p class="text-slate-600 dark:text-text-subtle text-lg">Senior partners with deep regional experience.</p>
         </div>
         <a class="hidden md:inline-flex items-center text-primary font-bold hover:underline transition-colors" href="leadership.html">
           View full leadership<span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <!-- Luis -->
-        <article class="leader-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-          <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#111f22]">
-            <img src="../assets/img/leadership/luis-malvido.webp" onerror="this.onerror=null;this.src='../assets/img/leadership/luis-malvido.png';" alt="Luis Malvido" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-            <div class="leader-overlay absolute inset-0 bg-gradient-to-t from-[#111f22]/80 via-[#111f22]/20 to-transparent"></div>
-            <div class="pointer-events-none absolute inset-0 leadership-sheen opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="leader-card group flex flex-col items-center text-center opacity-0 translate-y-3">
+          <div class="leader-avatar relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
+            <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <img src="../assets/img/leadership/luis-malvido.png" alt="Luis Malvido" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
           </div>
-          <div class="mt-5">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Luis Malvido</h3>
-            <p class="text-primary font-medium text-sm">Partner</p>
-            <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed">
-              With over 20 years of experience as CEO in Telco, PayTV and aviation, he has led transformation and growth processes across multiple markets in LatAm and Central Europe.
-            </p>
-            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="https://www.linkedin.com/in/luis-malvido-ceo/" target="_blank" rel="noopener">
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Luis Malvido</h3>
+          <p class="text-primary font-medium mb-2">Partner</p>
+          <a class="mt-3 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/luis-malvido-ceo/" target="_blank" rel="noopener">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          </a>
+        </div>
 
         <!-- Gustavo -->
-        <article class="leader-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-          <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#111f22]">
-            <img src="../assets/img/leadership/gustavo-ledesma.webp" onerror="this.onerror=null;this.src='../assets/img/leadership/gustavo-ledesma.png';" alt="Gustavo Ledesma" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-            <div class="leader-overlay absolute inset-0 bg-gradient-to-t from-[#111f22]/80 via-[#111f22]/20 to-transparent"></div>
-            <div class="pointer-events-none absolute inset-0 leadership-sheen opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="leader-card group flex flex-col items-center text-center opacity-0 translate-y-3">
+          <div class="leader-avatar relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
+            <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <img src="../assets/img/leadership/gustavo-ledesma.png" alt="Gustavo Ledesma" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
           </div>
-          <div class="mt-5">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Gustavo Ledesma</h3>
-            <p class="text-primary font-medium text-sm">Partner</p>
-            <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed">
-              30+ years in telecom and media. Former CEO roles across the region, focused on commercial strategy, operational excellence and scalable execution.
-            </p>
-            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="https://www.linkedin.com/in/gustavo-ledesma-advisor-partner-cmo/" target="_blank" rel="noopener">
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Gustavo Ledesma</h3>
+          <p class="text-primary font-medium mb-2">Partner</p>
+          <a class="mt-3 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/gustavo-ledesma-advisor-partner-cmo/" target="_blank" rel="noopener">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          </a>
+        </div>
 
         <!-- Juan -->
-        <article class="leader-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-          <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#111f22]">
-            <img src="../assets/img/leadership/juan-goulu.webp" onerror="this.onerror=null;this.src='../assets/img/leadership/juan-goulu.png';" alt="Juan Goulu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-            <div class="leader-overlay absolute inset-0 bg-gradient-to-t from-[#111f22]/80 via-[#111f22]/20 to-transparent"></div>
-            <div class="pointer-events-none absolute inset-0 leadership-sheen opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="leader-card group flex flex-col items-center text-center opacity-0 translate-y-3">
+          <div class="leader-avatar relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
+            <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <img src="../assets/img/leadership/juan-goulu.png" alt="Juan Goulu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
           </div>
-          <div class="mt-5">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Juan Goulu</h3>
-            <p class="text-primary font-medium text-sm">Partner</p>
-            <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed">
-              Senior executive with extensive experience in telecom operations and digital transformation, delivering disciplined programs across multiple countries.
-            </p>
-            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="https://www.linkedin.com/in/juan-goulu-62723042/" target="_blank" rel="noopener">
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Juan Goulu</h3>
+          <p class="text-primary font-medium mb-2">Partner</p>
+          <a class="mt-3 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/juan-goulu-62723042/" target="_blank" rel="noopener">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          </a>
+        </div>
 
         <!-- Jose -->
-        <article class="leader-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-          <div class="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#111f22]">
-            <img src="../assets/img/leadership/jose-ugarte.webp" onerror="this.onerror=null;this.src='../assets/img/leadership/jose-ugarte.png';" alt="Jose Ugarte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
-            <div class="leader-overlay absolute inset-0 bg-gradient-to-t from-[#111f22]/80 via-[#111f22]/20 to-transparent"></div>
-            <div class="pointer-events-none absolute inset-0 leadership-sheen opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="leader-card group flex flex-col items-center text-center opacity-0 translate-y-3">
+          <div class="leader-avatar relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white/90 dark:border-[#244147] shadow-lg bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
+            <span class="pointer-events-none absolute inset-0 rounded-full ring-0 ring-primary/0 transition-all duration-300 group-hover:ring-4 group-hover:ring-primary/25"></span>
+            <span class="pointer-events-none absolute inset-0 rounded-full leadership-sheen opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <img src="../assets/img/leadership/jose-ugarte.png" alt="Jose Ugarte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
           </div>
-          <div class="mt-5">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Jose Ugarte</h3>
-            <p class="text-primary font-medium text-sm">Partner</p>
-            <p class="leader-bio mt-3 text-slate-600 dark:text-text-subtle text-sm leading-relaxed">
-              Strategy and investment advisory for telecom and technology in LatAm, connecting operators, investors and execution partners to unlock growth.
-            </p>
-            <a class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="https://www.linkedin.com/in/jfugarte/" target="_blank" rel="noopener">
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      </div>
-
-      <div class="mt-10 md:hidden">
-        <a class="inline-flex items-center text-primary font-bold hover:underline transition-colors" href="leadership.html">
-          View full leadership<span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-        </a>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white">Jose Ugarte</h3>
+          <p class="text-primary font-medium mb-2">Partner</p>
+          <a class="mt-3 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-white group-hover:-translate-y-1" href="https://www.linkedin.com/in/jfugarte/" target="_blank" rel="noopener">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
-
-
 </main>
 
 

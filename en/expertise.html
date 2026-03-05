@@ -118,7 +118,12 @@
 
   
 <main class="pt-24">
-  <section class="py-20 bg-background-light dark:bg-background-dark">
+  <section class="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+    <!-- Hero media (subtle motion) -->
+    <div class="absolute inset-0 pointer-events-none hero-media hero-kenburns opacity-20" style="--hero-url:url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2070&auto=format&fit=crop')" aria-hidden="true"></div>
+    <div class="absolute inset-0 hero-vignette" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none hero-grain" aria-hidden="true"></div>
+
     
     <!-- Subtle animated background -->
     <div class="pointer-events-none absolute inset-0 opacity-[0.07] dark:opacity-[0.12] cap-dots"></div>
@@ -165,115 +170,152 @@
   </section>
 
   <!-- Strategic Advisory Capabilities -->
-  
-<section id="capabilities" class="relative overflow-hidden py-20 bg-white dark:bg-[#0d1618] border-y border-slate-200 dark:border-white/10">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-      <div class="max-w-3xl">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Strategic Advisory Capabilities</h2>
-        <p class="mt-4 text-slate-600 dark:text-text-subtle text-lg">
-          Partner-led advisory to drive disciplined growth, capital strategy, and regional execution across Latin America.
-        </p>
-      </div>
-      <div class="flex gap-3">
-        <a href="contact.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-primary text-[#111f22] font-semibold hover:opacity-95 transition">
-          Start a conversation
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="case-studies.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold hover:bg-white/10 transition">
-          See case studies
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      <!-- Featured capability -->
-      <div class="lg:col-span-5">
-        <div class="cap-card rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-8">
-          <p class="text-xs tracking-[0.22em] uppercase text-slate-500 dark:text-slate-400">Flagship capability</p>
-          <h3 class="mt-3 font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Strategic Transformation</h3>
-          <p class="mt-4 text-slate-600 dark:text-text-subtle leading-relaxed">
-            We align ambition, capital, and execution. The goal is not “a plan” — it’s a set of decisions that can be delivered, with clear accountabilities and measurable outcomes.
+  <section id="capabilities" class="relative overflow-hidden py-20 bg-white dark:bg-[#0d1618] border-y border-slate-200 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div class="max-w-3xl">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Strategic Advisory Capabilities</h2>
+          <p class="mt-4 text-slate-600 dark:text-text-subtle text-lg">
+            Partner-led advisory to drive disciplined growth, capital strategy, and regional execution across Latin America.
           </p>
-
-          <div class="mt-6 rounded-xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-5">
-            <p class="text-sm font-semibold text-slate-900 dark:text-white">Typical deliverables</p>
-            <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-text-subtle">
-              <li class="flex gap-2"><span class="text-primary">•</span><span>North‑star strategy and investment thesis</span></li>
-              <li class="flex gap-2"><span class="text-primary">•</span><span>Portfolio and market prioritization</span></li>
-              <li class="flex gap-2"><span class="text-primary">•</span><span>Operating model and governance</span></li>
-              <li class="flex gap-2"><span class="text-primary">•</span><span>Execution roadmap with milestones</span></li>
-            </ul>
-          </div>
+        </div>
+        <div class="flex gap-3">
+          <a href="contact.html" class="cta-shimmer relative overflow-hidden inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-primary text-white font-semibold hover:opacity-95 transition">
+            Start a conversation
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="case-studies.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold hover:bg-white/10 transition">
+            See case studies
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
 
-      <!-- Capability stack (editorial list) -->
-      <div class="lg:col-span-7">
-        <div class="space-y-4">
-          <div class="cap-card rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Commercial Strategy</h4>
-                <p class="mt-2 text-sm text-slate-600 dark:text-text-subtle leading-relaxed">
-                  Pricing, packaging, distribution and go‑to‑market decisions grounded in regional reality.
-                </p>
-              </div>
-              <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">↗</span>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="cap-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-7 hover:-translate-y-1 transition opacity-0 translate-y-3">
+          <div class="flex items-start gap-4">
+            <div class="cap-icon w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.05] group-hover:-rotate-1">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Growth &amp; Business Transformation</h3>
+              <p class="mt-2 text-slate-600 dark:text-text-subtle">Accelerating performance in complex markets.</p>
             </div>
           </div>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-200/90">
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Business model refinement and revenue acceleration</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Regional expansion strategy</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Commercial and operating model redesign</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Transformation programs and performance turnarounds</span></li>
+          </ul>
+        </div>
 
-          <div class="cap-card rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Digital &amp; AI Enablement</h4>
-                <p class="mt-2 text-sm text-slate-600 dark:text-text-subtle leading-relaxed">
-                  From modern data foundations to pragmatic AI adoption — focused on operational impact.
-                </p>
-              </div>
-              <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">↗</span>
+        <div class="cap-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-7 hover:-translate-y-1 transition opacity-0 translate-y-3">
+          <div class="flex items-start gap-4">
+            <div class="cap-icon w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.05] group-hover:-rotate-1">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12L14.5 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Capital &amp; Investment Strategy</h3>
+              <p class="mt-2 text-slate-600 dark:text-text-subtle">Aligning capital decisions with long-term value creation.</p>
             </div>
           </div>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-200/90">
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Buy-side and sell-side advisory</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Due diligence and investment evaluation</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Portfolio optimization and value creation planning</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Post-investment strategic support</span></li>
+          </ul>
+        </div>
 
-          <div class="cap-card rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Operating Model Optimization</h4>
-                <p class="mt-2 text-sm text-slate-600 dark:text-text-subtle leading-relaxed">
-                  Org design, governance, KPIs, and execution rituals to scale delivery across countries.
-                </p>
-              </div>
-              <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">↗</span>
+        <div class="cap-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-7 hover:-translate-y-1 transition opacity-0 translate-y-3">
+          <div class="flex items-start gap-4">
+            <div class="cap-icon w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.05] group-hover:-rotate-1">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 20h10M9 20V8h6v12M6 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Board &amp; Executive Advisory</h3>
+              <p class="mt-2 text-slate-600 dark:text-text-subtle">Senior-level guidance when it matters most.</p>
             </div>
           </div>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-200/90">
+            <li class="flex gap-2"><span class="text-primary">•</span><span>CEO and C-level advisory</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Board participation and governance support</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Strategic planning and scenario design</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Organizational alignment for growth</span></li>
+          </ul>
+        </div>
 
-          <div class="cap-card rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Capital &amp; Partnerships</h4>
-                <p class="mt-2 text-sm text-slate-600 dark:text-text-subtle leading-relaxed">
-                  Investor positioning, deal support, and partnership strategy to accelerate growth.
-                </p>
-              </div>
-              <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">↗</span>
+        <div class="cap-card group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-7 hover:-translate-y-1 transition opacity-0 translate-y-3">
+          <div class="flex items-start gap-4">
+            <div class="cap-icon w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.05] group-hover:-rotate-1">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Market Expansion &amp; Regional Execution</h3>
+              <p class="mt-2 text-slate-600 dark:text-text-subtle">Scaling across Latin America with discipline.</p>
             </div>
           </div>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-200/90">
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Cross-border expansion strategy</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Go-to-market design</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Channel, pricing, and commercialization support</span></li>
+            <li class="flex gap-2"><span class="text-primary">•</span><span>Local execution oversight and stakeholder alignment</span></li>
+          </ul>
+        </div>
+      </div>
 
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#operating-model" class="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold hover:bg-white/10 transition">
-              See the operating model
-            </a>
-            <a href="#engagement-approach" class="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold hover:bg-white/10 transition">
-              How engagements work
-            </a>
+      <!-- Our Approach -->
+      <div class="mt-14 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-8 md:p-10">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div class="max-w-2xl">
+            <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Our Approach</h3>
+            <p class="mt-3 text-slate-600 dark:text-text-subtle">
+              Selective, partner-led engagements focused on measurable outcomes — from strategic clarity to regional execution.
+            </p>
+          </div>
+          <a href="contact.html" class="cta-shimmer relative overflow-hidden inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:opacity-95 transition">
+            Work with us →
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="approach-card rounded-xl bg-white/50 dark:bg-black/10 border border-slate-200/70 dark:border-white/10 p-6 opacity-0 translate-y-3">
+            <div class="text-primary font-bold uppercase tracking-wider text-xs">Senior-led</div>
+            <div class="mt-2 text-slate-900 dark:text-white font-semibold">Partner involvement from day one</div>
+            <p class="mt-2 text-slate-600 dark:text-text-subtle text-sm">
+              Every engagement is led directly by senior partners with deep regional experience.
+            </p>
+          </div>
+
+          <div class="approach-card rounded-xl bg-white/50 dark:bg-black/10 border border-slate-200/70 dark:border-white/10 p-6 opacity-0 translate-y-3">
+            <div class="text-primary font-bold uppercase tracking-wider text-xs">Selective</div>
+            <div class="mt-2 text-slate-900 dark:text-white font-semibold">Focused, high-conviction work</div>
+            <p class="mt-2 text-slate-600 dark:text-text-subtle text-sm">
+              We work with a limited number of clients to ensure depth, alignment, and impact.
+            </p>
+          </div>
+
+          <div class="approach-card rounded-xl bg-white/50 dark:bg-black/10 border border-slate-200/70 dark:border-white/10 p-6 opacity-0 translate-y-3">
+            <div class="text-primary font-bold uppercase tracking-wider text-xs">Execution-oriented</div>
+            <div class="mt-2 text-slate-900 dark:text-white font-semibold">From strategy to outcomes</div>
+            <p class="mt-2 text-slate-600 dark:text-text-subtle text-sm">
+              Beyond strategy, we support implementation and decision-making in real operating contexts.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
 </main>
 
