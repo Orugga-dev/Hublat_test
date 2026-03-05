@@ -1,72 +1,24 @@
-<!DOCTYPE html>
-<html class="dark" lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Hublat | Socios</title>
+# Hublat Website (static)
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+## Structure
+- `/en` English site
+- `/es` Spanish site
+- `/assets` shared images/css/js
+- `/shared/partials` header/footer per language
+- `/shared/data` optional json
 
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#17b0cf",
-            "background-light": "#f6f8f8",
-            "background-dark": "#111e21",
-            "card-dark": "#1a2c30",
-            "text-subtle": "#94aeb5",
-          },
-          fontFamily: {
-            sans: ["Manrope", "sans-serif"],
-            serif: ["Playfair Display", "serif"],
-          },
-          borderRadius: {
-            DEFAULT: "0.25rem",
-            lg: "0.5rem",
-            xl: "0.75rem",
-            full: "9999px",
-          },
-        },
-      },
-    };
-  </script>
+## How includes work
+Each page contains:
+```html
+<div data-include="header" data-lang="en"></div>
+...
+<div data-include="footer" data-lang="en"></div>
+<script src="../assets/js/includes.js"></script>
+```
+The script fetches:
+- `../shared/partials/header.en.html`
+- `../shared/partials/footer.en.html`
 
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/inner-hero.css" />
-  <style>
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #111e21; }
-    ::-webkit-scrollbar-thumb { background: #244147; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #17b0cf; }
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
-
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden transition-colors duration-300">
-  <div data-include="header" data-lang="es"></div>
-
-  <main class='pt-24'>
-  <section class="inner-hero min-h-[360px] md:min-h-[420px] flex items-center">
-    <div class="inner-hero-media inner-hero-kenburns" style="--hero-url:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2400&auto=format&fit=crop'); --hero-opacity:0.36; --hero-blur:7px;" aria-hidden="true"></div>
-    <div class="inner-hero-vignette" aria-hidden="true"></div>
-    <div class="inner-hero-accent" aria-hidden="true"></div>
-    <div class="inner-hero-grain" aria-hidden="true"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6 py-20">
-      <h1 class='font-serif text-4xl font-bold mb-4'>Socios</h1>
-      <p class='text-slate-600 dark:text-text-subtle'>Base lista — mantenemos las mismas fotos y links que en EN.</p>
-    </div>
-  </section>
-</main>
-
-  <div data-include="footer" data-lang="es"></div>
-  <script src="../assets/js/includes.js"></script>
-</body>
-</html>
+## Tailwind
+Pages currently use Tailwind CDN for fast iteration.
+If you want a compiled CSS pipeline later, we can add it to your build environment (Node + Tailwind CLI).
