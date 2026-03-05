@@ -1,38 +1,35 @@
-/* Internal heroes (non-index) */
+/* Internal heroes (non-index) — tuned for readability */
 .inner-hero{
   position: relative;
   overflow: hidden;
+  /* Push image further into the background */
+  --hero-opacity: 0.18;
 }
+
+/* Make the hero image feel like a subtle texture */
 .inner-hero .hero-media{
-  /* Make internal hero imagery clearly secondary to text */
-  opacity: 0.18 !important;
-  filter: saturate(0.92) contrast(1.05) brightness(0.55) blur(1.6px);
+  filter: saturate(0.90) contrast(0.95) brightness(0.60) blur(2px);
+  transform: scale(1.03);
 }
+
+/* Stronger vignette so text always reads */
 .inner-hero .hero-vignette{
-  /* Stronger, more uniform darkening for readability */
-  background:
-    radial-gradient(80% 60% at 50% 30%, rgba(17,31,34,0.30) 0%, rgba(17,31,34,0.80) 55%, rgba(17,31,34,0.96) 100%),
-    linear-gradient(180deg, rgba(17,31,34,0.55) 0%, rgba(17,31,34,0.78) 40%, rgba(17,31,34,0.92) 100%);
-}
-.inner-hero .hero-grain{
-  opacity: 0.06;
+  background: radial-gradient(85% 70% at 50% 30%,
+    rgba(13,22,24,0.55) 0%,
+    rgba(13,22,24,0.84) 52%,
+    rgba(13,22,24,0.96) 100%);
 }
 
-/* Ensure content sits above overlays */
-.inner-hero > .max-w-5xl,
-.inner-hero > .max-w-6xl,
-.inner-hero > .max-w-7xl,
-.inner-hero > .container{
-  position: relative;
-  z-index: 2;
-}
+/* Keep grain subtle */
+.inner-hero .hero-grain{ opacity: 0.06; }
 
-/* Tiny shadow to keep text legible on any image */
+/* Extra legibility over imagery */
 .inner-hero h1,
-.inner-hero h2,
 .inner-hero p{
-  text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.55);
 }
+
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
   .hero-kenburns{ animation: none !important; }
 }
