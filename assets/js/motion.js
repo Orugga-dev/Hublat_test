@@ -101,3 +101,22 @@
     init();
   }
 })();
+
+
+// Header polish on scroll (executive, subtle)
+function enableHeaderScrollState() {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  function onScroll() {
+    if (window.scrollY > 8) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// Re-run header state once partials are injected
+try {
+  document.addEventListener('hublat:includes-ready', function(){ enableHeaderScrollState(); });
+  setTimeout(function(){ enableHeaderScrollState(); }, 150);
+} catch(e) {}

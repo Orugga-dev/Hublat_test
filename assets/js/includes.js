@@ -62,5 +62,6 @@
     // Footer year
     const y = document.querySelector("[data-year]");
     if (y) y.textContent = new Date().getFullYear();
+    document.dispatchEvent(new Event("hublat:includes-ready"));
   });
 })();
