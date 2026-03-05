@@ -1,39 +1,44 @@
-
-/* ================================
-   Inner Page Hero System (Hublat)
-   Calm, executive, readable.
-   ================================ */
-
+/* Inner heroes — readability-first */
 .inner-hero{ position:relative; overflow:hidden; background:#111f22; }
-.inner-hero-media{
-  position:absolute; inset:0;
-  background-image:var(--hero-url);
-  background-size:cover; background-position:center;
-  opacity:var(--hero-opacity, 0.38);
-  transform:scale(1.05);
-  filter: blur(var(--hero-blur, 6px)) saturate(1.05) contrast(1.02);
+
+/* Make background image subtle + soft */
+.inner-hero .hero-media{
+  opacity: var(--hero-opacity, 0.22) !important;
+  filter: blur(var(--hero-blur, 10px)) saturate(0.95) contrast(1.02) brightness(0.85);
+  transform: scale(1.06);
 }
+
+/* Slow ambient motion */
 @keyframes innerHeroMove{
-  0%{ transform:scale(1.05) translate3d(0,0,0); }
-  100%{ transform:scale(1.10) translate3d(-1%, -1%, 0); }
+  0%{ transform:scale(1.06) translate3d(0,0,0); }
+  100%{ transform:scale(1.11) translate3d(-1.2%, -1.2%, 0); }
 }
-.inner-hero-kenburns{ animation: innerHeroMove 26s ease-in-out infinite alternate; }
-.inner-hero-vignette{
-  position:absolute; inset:0;
+.inner-hero .hero-kenburns{ animation: innerHeroMove 28s ease-in-out infinite alternate; }
+
+/* Strong vignette for legibility */
+.inner-hero .hero-vignette{
   background:
-    radial-gradient(120% 90% at 22% 28%, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.84) 100%),
-    linear-gradient(90deg, rgba(17,31,34,0.80) 0%, rgba(17,31,34,0.50) 42%, rgba(17,31,34,0.82) 100%);
+    radial-gradient(120% 90% at 22% 28%, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.82) 55%, rgba(0,0,0,0.93) 100%),
+    linear-gradient(90deg, rgba(17,31,34,0.92) 0%, rgba(17,31,34,0.70) 42%, rgba(17,31,34,0.92) 100%);
 }
-.inner-hero-accent{
-  position:absolute; inset:0;
-  background: radial-gradient(60% 65% at 82% 38%, rgba(23,176,207,0.18) 0%, rgba(23,176,207,0.05) 40%, rgba(23,176,207,0.00) 70%);
-  mix-blend-mode:screen; opacity:0.55;
+
+/* Grain lower to avoid “dirty” look */
+.inner-hero .hero-grain{ opacity:0.02 !important; }
+
+/* Content glass panel */
+.inner-hero-panel{
+  display:inline-block;
+  padding: 18px 18px;
+  border-radius: 16px;
+  background: rgba(10,16,18,0.46);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.inner-hero-grain{
-  position:absolute; inset:0; opacity:0.035;
-  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-  pointer-events:none;
-}
+.inner-hero-panel h1{ text-shadow: 0 12px 40px rgba(0,0,0,0.55); }
+.inner-hero-panel p{ text-shadow: 0 10px 28px rgba(0,0,0,0.55); }
+
 @media (prefers-reduced-motion: reduce){
-  .inner-hero-kenburns{ animation:none !important; }
+  .inner-hero .hero-kenburns{ animation:none !important; }
 }
