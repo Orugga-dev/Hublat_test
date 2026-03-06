@@ -47,9 +47,24 @@
     ::-webkit-scrollbar-thumb:hover { background: #17b0cf; }
     html { scroll-behavior: smooth; }
     .contact-shell { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: linear-gradient(180deg, rgba(18, 33, 36, 0.84) 0%, rgba(13, 22, 24, 0.94) 100%); }
-    .contact-field { width: 100%; border-radius: 0.9rem; border: 1px solid rgba(148, 174, 181, 0.18); background: rgba(255, 255, 255, 0.04); color: #f8fafc; padding: 0.95rem 1rem; outline: none; transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; }
-    .contact-field::placeholder { color: rgba(148, 174, 181, 0.75); }
-    .contact-field:focus { border-color: rgba(23, 176, 207, 0.75); box-shadow: 0 0 0 4px rgba(23, 176, 207, 0.12); background: rgba(255, 255, 255, 0.06); }
+    .contact-field{
+  width:100%;
+  border-radius:0.9rem;
+  border:1px solid rgba(148,174,181,0.25);
+  background:#ffffff;
+  color:#111827;
+  padding:0.95rem 1rem;
+  outline:none;
+  transition:border-color 180ms ease, box-shadow 180ms ease;
+}
+.contact-field::placeholder{
+  color:#9ca3af;
+}
+.contact-field:focus{
+  border-color:#17b0cf;
+  box-shadow:0 0 0 3px rgba(23,176,207,0.15);
+  background:#ffffff;
+}
     .contact-field.is-invalid { border-color: rgba(248, 113, 113, 0.8); box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.12); }
     .contact-label { display: block; margin-bottom: 0.55rem; font-size: 0.9rem; font-weight: 700; color: #e2e8f0; }
     .field-error { display: none; margin-top: 0.55rem; font-size: 0.84rem; line-height: 1.4; color: #fca5a5; }
@@ -154,10 +169,7 @@
       var startedAt = document.getElementById('started-at-en');
       var submitButton = form.querySelector('.submit-btn');
       var submitLabel = form.querySelector('.btn-label');
-      var labels = {"sending": "Sending...", "success": "Your message was sent successfully. We will get back to you shortly.", "generic_err": "We could not send your message right now. Please try again in a few minutes.", "spam_err": "We could not validate your submission. Please refresh the page and try again.", "name_req": "Please enter your name.", "email_req": "Please enter your email.", "email_invalid": "Enter a valid email address.", "message_req": "Please enter a message.", "message_short": "The message must be at least 20 characters long."};
-      var defaultLabel = submitLabel.textContent;
-      if (startedAt) startedAt.value = String(Date.now());
-      function showStatus(type, message) { statusBox.className = 'contact-status is-visible ' + (type === 'success' ? 'is-success' : 'is-error'); statusBox.textContent = message; }
+      var labels = {"sending": "Sending...", "success": "Your message was sent successfully. We will get back to you shortly.", "generic_err": "We could not send your message right now. Please try again in a few minutes.", "spam_err": "We could not validate your submission. Please refresh the page and try again.", "name_req": "Please enter your name.", "email_req": "Please enter your email.", "email_invalid": "Enter a valid email address.", "message_req": "Please enter a message.",  message) { statusBox.className = 'contact-status is-visible ' + (type === 'success' ? 'is-success' : 'is-error'); statusBox.textContent = message; }
       function clearStatus() { statusBox.className = 'contact-status'; statusBox.textContent = ''; }
       function setFieldState(field, message) {
         var errorEl = document.getElementById(field.name + '-error-en');
@@ -181,7 +193,7 @@
         }
         if (field.name === 'message') {
           if (!value) message = labels.message_req;
-          else if (value.length < 20) message = labels.message_short;
+          
         }
         setFieldState(field, message);
         return !message;
