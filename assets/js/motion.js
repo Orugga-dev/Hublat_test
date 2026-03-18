@@ -228,3 +228,61 @@ try {
     initStatBorders();
   });
 })();
+
+
+// Stats counter + leadership reveal (index page)
+(function () {
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function animateCount(el, target, suffix) {
+    var start = 0, duration = 1100, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var p = Math.min((ts - startTime) / duration, 1);
+      el.textContent = Math.round(start + (target - start) * easeOutCubic(p)) + (suffix || "");
+      if (p < 1) requestAnimationFrame(step);
+      else { el.classList.remove("stat-pop"); void el.offsetWidth; el.classList.add("stat-pop"); }
+    }
+    requestAnimationFrame(step);
+  }
+  function initStats() {
+    var section = document.getElementById("stats");
+    if (!section) return;
+    var items = Array.prototype.slice.call(section.querySelectorAll(".stat-item"));
+    var counters = Array.prototype.slice.call(section.querySelectorAll(".stat-value[data-count]"));
+    var hasRun = false;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          items.forEach(function (item, i) {
+            setTimeout(function () {
+              item.classList.remove("opacity-0","translate-y-3");
+              item.classList.add("opacity-100","translate-y-0");
+              var ul = item.querySelector(".stat-underline");
+              if (ul) { ul.classList.remove("scale-x-0"); ul.classList.add("scale-x-100"); }
+            }, i * 100);
+          });
+          if (!hasRun) { hasRun = true; counters.forEach(function (el) { animateCount(el, parseInt(el.dataset.count, 10), el.dataset.suffix || ""); }); }
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    obs.observe(section);
+  }
+  function initLeadership() {
+    var section = document.getElementById("leadership");
+    if (!section) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll(".leader-card"));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          cards.forEach(function (card, i) { setTimeout(function () { card.classList.add("is-visible"); }, i * 90); });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    if (section) obs.observe(section);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () { initStats(); initLeadership(); });
+  } else { initStats(); initLeadership(); }
+})();
